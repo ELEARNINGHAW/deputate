@@ -1,0 +1,8 @@
+# Beschreibung
+AuthType Basic 
+AuthUserFile .passwd 
+AuthName "geschuetzer Bereich" 
+
+order deny,allow
+allow from all
+require valid-user
