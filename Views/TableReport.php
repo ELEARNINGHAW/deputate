@@ -120,14 +120,19 @@ $result = $dbConnect->query($query_list);
 					<td><?=$j?></td>
 					<?php
 					if (count($values) > 0) {
+
+                        $selection = filter_input(INPUT_GET, 'selection');    if ( $selection == null) { $selection=''; }
+
+
+
 						echo "<td><a href=../Reports/ReportFrame.php?report=AbfrageLVProjekte&table=$docTable&relation=$relation".
-							"&selection=".rawurlencode(filter_input(INPUT_GET, 'selection')).
+							"&selection=".$selection.
 							"&detail=".rawurlencode(implode(',', $values))." target=_blank>Abfragen</a></td>";
 						echo "<td><a href=../Reports/ReportFrame.php?report=Bilanz&table=$docTable&relation=$relation".
-							"&selection=".rawurlencode(filter_input(INPUT_GET, 'selection')).
+                            "&selection=".$selection.
 							"&detail=".rawurlencode(implode(',', $values))." target=_blank>Bilanz</a></td>";
 						echo "<td><a href=../Reports/ReportFrame.php?report=Zeitkonto&table=$docTable&relation=$relation".
-							"&selection=".rawurlencode(filter_input(INPUT_GET, 'selection')).
+                            "&selection=".$selection.
 							"&detail=".rawurlencode(implode(',', $values))." target=_blank>Zeitkonto</a></td>";
 					}
 					

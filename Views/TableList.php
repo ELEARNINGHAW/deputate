@@ -17,7 +17,7 @@ $details = filter_input(INPUT_GET, 'details')==NULL? array(): explode('!', filte
 $aktuellesSemester = $_SESSION['aktuellesSemester'];
 
 $dbTable = $_SESSION['tables'][$docTable];
-$dbRelation = $_SESSION['relations'][$relation];
+if( $relation ) { $dbRelation = $_SESSION['relations'][$relation];}
 $ID = $dbTable->get_ID();
 $where = $dbTable->get_where();
 $order = $dbTable->get_order();
@@ -142,7 +142,8 @@ if (!$result) {
                     echo "<td> $j </td>";
                 }
                 if (count($values) > 0) {
-                    $selection = filter_input(INPUT_GET, 'selection');
+
+                    $selection = filter_input(INPUT_GET, 'selection');    if ( $selection == null) { $selection=''; }
                     echo "<td><a href=TableDetail.php?table=$docTable" .
                     "&relation=$relation" .
                     "&selection=" . rawurlencode($selection) .

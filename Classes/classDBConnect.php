@@ -8,7 +8,7 @@
 
 class DBConnect extends mysqli {
 	
-//    private $databaseHost = "localhost";
+//  --  private $databaseHost = "localhost";
 	private $databaseHost;
 	private $databasePort;
 	private $databaseName;
